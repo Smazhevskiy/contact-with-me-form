@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/contact-with-me-form/static/css/main.c0be9b58.css",
-    "main.js": "/contact-with-me-form/static/js/main.b3689a8c.js",
-    "static/js/787.cfd8f164.chunk.js": "/contact-with-me-form/static/js/787.cfd8f164.chunk.js",
-    "index.html": "/contact-with-me-form/index.html",
-    "main.c0be9b58.css.map": "/contact-with-me-form/static/css/main.c0be9b58.css.map",
-    "main.b3689a8c.js.map": "/contact-with-me-form/static/js/main.b3689a8c.js.map",
-    "787.cfd8f164.chunk.js.map": "/contact-with-me-form/static/js/787.cfd8f164.chunk.js.map"
+    "main.css": "/contactWithMeForm/static/css/main.c0be9b58.css",
+    "main.js": "/contactWithMeForm/static/js/main.134cf2a1.js",
+    "static/js/787.cfd8f164.chunk.js": "/contactWithMeForm/static/js/787.cfd8f164.chunk.js",
+    "index.html": "/contactWithMeForm/index.html",
+    "main.c0be9b58.css.map": "/contactWithMeForm/static/css/main.c0be9b58.css.map",
+    "main.134cf2a1.js.map": "/contactWithMeForm/static/js/main.134cf2a1.js.map",
+    "787.cfd8f164.chunk.js.map": "/contactWithMeForm/static/js/787.cfd8f164.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c0be9b58.css",
-    "static/js/main.b3689a8c.js"
+    "static/js/main.134cf2a1.js"
   ]
 }
