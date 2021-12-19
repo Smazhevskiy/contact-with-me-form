@@ -32,14 +32,19 @@ export const ContactWithMe = () => {
             }
             return errors
         },
-        onSubmit: values => {
-            axios.post('https://smtp-nodemailer.herokuapp.com/sendMessage', {
-                    name: values.name,
-                    contacts: values.contacts,
-                    message: values.message
-                },
-            )
-            formik.resetForm()
+        onSubmit: async values => {
+            try {
+                const response = await axios.post('https://smtp-nodemailer.herokuapp.com/sendMessage', {
+                        name: values.name,
+                        contacts: values.contacts,
+                        message: values.message
+                    },
+                )
+                if (response.data.success) alert('Сообщение отправлено')
+                formik.resetForm()
+            } catch (error) {
+                console.log(error)
+            }
         },
     })
 
