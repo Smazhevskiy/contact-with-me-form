@@ -1,7 +1,14 @@
-import React from 'react'
-import {Button, FormControl, FormGroup, FormLabel, Grid, TextField} from '@material-ui/core'
+import React, {useState} from 'react'
+import Button from '@material-ui/core/Button'
+import FormControl from '@material-ui/core/FormControl'
+import FormGroup from '@material-ui/core/FormGroup'
+import FormLabel from '@material-ui/core/FormLabel'
+import Grid from '@material-ui/core/Grid'
+import Snackbar from '@material-ui/core/Snackbar'
+import TextField from '@material-ui/core/TextField'
 import {FormikErrors, useFormik} from 'formik'
 import axios from 'axios'
+import {SnackbarContent} from '@material-ui/core'
 
 
 interface FormValues {
@@ -10,9 +17,15 @@ interface FormValues {
     message: string
 }
 
+
 export const ContactWithMe = () => {
+    let [openSnackBar, setOpenSnackBar] = useState<boolean>(false)
+    let [disableButton, setDisableButton] = useState<boolean>(false)
+    let [snackMessage, setSnackMessage] = useState<string>('')
+    let [errorSnack, setErrorSnack] = useState<boolean>(false)
 
 
+    const handleClose = () => setOpenSnackBar(false)
     const formik = useFormik({
         initialValues: {
             name: '',
@@ -33,6 +46,7 @@ export const ContactWithMe = () => {
             return errors
         },
         onSubmit: async values => {
+            setDisableButton(true)
             try {
                 const response = await axios.post('https://smtp-nodemailer.herokuapp.com/sendMessage', {
                         name: values.name,
@@ -40,10 +54,20 @@ export const ContactWithMe = () => {
                         message: values.message
                     },
                 )
-                if (response.data.success) alert('Сообщение отправлено')
-                formik.resetForm()
+                if (response.data.success) {
+                    setSnackMessage('Ваше сообщение отправлено')
+                    setOpenSnackBar(true)
+                    setErrorSnack(false)
+                }
             } catch (error) {
+                setOpenSnackBar(true)
+                setDisableButton(true)
+                setErrorSnack(true)
+                setSnackMessage('Ошибка. Сообщение не отправлено!')
                 console.log(error)
+            } finally {
+                setDisableButton(false)
+                formik.resetForm()
             }
         },
     })
@@ -90,11 +114,31 @@ export const ContactWithMe = () => {
                             {formik.touched.message && formik.errors.message ?
                                 <div style={{color: 'red'}}>{formik.errors.message}</div> : null}
 
-                            <Button type={'submit'} variant={'contained'} color={'primary'}>Submit</Button>
+                            <Button
+                                type={'submit'}
+                                variant={'contained'}
+                                color={'primary'}
+                                disabled={disableButton}
+                                style={{opacity: disableButton ? '0.6' : '1'}}
+                            >Submit</Button>
                         </FormGroup>
                     </form>
+
                 </FormControl>
+
+                <Snackbar
+                    open={openSnackBar}
+                    autoHideDuration={6000}
+                    onClose={handleClose}
+                >
+                    <SnackbarContent style={{
+                        backgroundColor: errorSnack ? 'red' : 'green',
+                    }} message={snackMessage}/>
+                </Snackbar>
+
             </Grid>
+
         </Grid>
     )
 }
+
