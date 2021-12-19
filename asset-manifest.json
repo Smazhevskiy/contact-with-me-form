@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/contact-with-me-form/static/css/main.c0be9b58.css",
+    "main.js": "/contact-with-me-form/static/js/main.bb834be8.js",
+    "static/js/787.cfd8f164.chunk.js": "/contact-with-me-form/static/js/787.cfd8f164.chunk.js",
+    "index.html": "/contact-with-me-form/index.html",
+    "main.c0be9b58.css.map": "/contact-with-me-form/static/css/main.c0be9b58.css.map",
+    "main.bb834be8.js.map": "/contact-with-me-form/static/js/main.bb834be8.js.map",
+    "787.cfd8f164.chunk.js.map": "/contact-with-me-form/static/js/787.cfd8f164.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c0be9b58.css",
+    "static/js/main.bb834be8.js"
+  ]
+}
