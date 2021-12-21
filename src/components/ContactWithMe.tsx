@@ -9,6 +9,9 @@ import TextField from '@material-ui/core/TextField'
 import {FormikErrors, useFormik} from 'formik'
 import axios from 'axios'
 import {SnackbarContent} from '@material-ui/core'
+import LinearProgress from '@mui/material/LinearProgress';
+import Stack from '@mui/material/Stack'
+
 
 
 interface FormValues {
@@ -74,14 +77,18 @@ export const ContactWithMe = () => {
 
 
     return (
-        <Grid container justify="center">
+        <Grid  container justify="center">
+            {disableButton &&
+            <Stack sx={{position:'absolute', width: '100%', marginTop:'1px'}} >
+                <LinearProgress />
+            </Stack>
+            }
             <Grid item xs={4}>
                 <FormControl>
                     <form onSubmit={formik.handleSubmit}>
                         <FormLabel>
-                            <h2>If you would like contact with me, you can send a message to my email </h2>
+                            <h2 style={{marginTop:'3rem'}}>If you would like contact with me, you can send a message to my email </h2>
                         </FormLabel>
-
                         <FormGroup>
                             <TextField
                                 autoComplete={'off'}
